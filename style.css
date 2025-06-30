@@ -58,6 +58,10 @@ body {
   height: 5rem;
 }
 
+.logo {
+  text-align: center;
+}
+
 .logo span {
   font-size: var(--heading5);
   font-weight: 600;
@@ -317,6 +321,9 @@ a:hover {
 }
 
 @media (max-width: 768px) {
+  .logo span{
+    font-size: 1.2rem;
+  }
   .hamburger {
     display: block;
   }
