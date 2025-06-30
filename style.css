@@ -58,10 +58,6 @@ body {
   height: 5rem;
 }
 
-.logo {
-  text-align: center;
-}
-
 .logo span {
   font-size: var(--heading5);
   font-weight: 600;
