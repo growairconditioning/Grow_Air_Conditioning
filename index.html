@@ -146,7 +146,9 @@
               <textarea name="message" id="message" rows="8" required></textarea>
             </div>
             <div class="input submit">
-              <input type="submit" value="Submit" />
+              <button type="submit" id="submit-btn">
+                <span class="btn-text">Submit</span>
+              </button>
             </div>
           </form>
 
@@ -200,36 +202,48 @@
 
   <!-- Form JS -->
   <script>
-    const form = document.getElementById("contact-form");
-    const modal = document.getElementById("thank-you-modal");
+  const form = document.getElementById("contact-form");
+  const modal = document.getElementById("thank-you-modal");
+  const submitBtn = document.getElementById("submit-btn");
+  const btnText = submitBtn.querySelector(".btn-text");
 
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      const formData = new FormData(form);
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
 
-      fetch("https://formsubmit.co/growairconditioning45@gmail.com", {
-        method: "POST",
-        body: formData,
-        headers: { Accept: "application/json" },
+    submitBtn.classList.add("sending");
+    btnText.textContent = "Sending";
+
+    const formData = new FormData(form);
+
+    fetch("https://formsubmit.co/hassankhan4408@gmail.com", {
+      method: "POST",
+      body: formData,
+      headers: { Accept: "application/json" },
+    })
+      .then((response) => {
+        submitBtn.classList.remove("sending");
+        btnText.textContent = "Submit";
+
+        if (response.ok) {
+          form.reset();
+          modal.style.display = "flex";
+        } else {
+          alert("There was a problem. Try again later.");
+        }
       })
-        .then((response) => {
-          if (response.ok) {
-            form.reset();
-            modal.style.display = "flex";
-          } else {
-            alert("There was a problem. Try again later.");
-          }
-        })
-        .catch((error) => {
-          alert("Something went wrong.");
-          console.error(error);
-        });
-    });
+      .catch((error) => {
+        submitBtn.classList.remove("sending");
+        btnText.textContent = "Submit";
+        alert("Something went wrong.");
+        console.error(error);
+      });
+  });
 
-    function closeModal() {
-      modal.style.display = "none";
-    }
-  </script>
+  function closeModal() {
+    modal.style.display = "none";
+  }
+</script>
+
 </body>
 
 </html>
