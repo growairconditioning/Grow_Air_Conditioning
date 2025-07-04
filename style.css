@@ -444,3 +444,42 @@ a:hover {
     transform: scale(1);
   }
 }
+
+#submit-btn {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #1f2e5e; /* adjust to your theme */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  position: relative;
+}
+
+#submit-btn.sending {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.btn-text::after {
+  content: '';
+  display: inline-block;
+  width: 0.8em;
+  height: 0.8em;
+  margin-left: 8px;
+  border: 2px solid white;
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  vertical-align: middle;
+  visibility: hidden;
+}
+
+#submit-btn.sending .btn-text::after {
+  visibility: visible;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
