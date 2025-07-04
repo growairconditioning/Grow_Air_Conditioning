@@ -224,7 +224,7 @@
       .then((response) => {
         submitBtn.classList.remove("sending");
         btnText.textContent = "Submit";
-        console.log(response)
+
         if (response.ok) {
           form.reset();
           modal.style.display = "flex";
